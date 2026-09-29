@@ -4,9 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zivelo - Social Platform</title> 
-  <script>
-alert("Zivelo JavaScript is working!");
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://cpynxwmlmhokeprgqjeg.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_mCjb9S6dt4r8ly7HxDEDUg_kcM1e1eG";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+alert("Supabase is connected to Zivelo!");
+</script>
 
 <style>
 *{
