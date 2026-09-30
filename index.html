@@ -466,6 +466,13 @@ alert("ZIVELO JAVASCRIPT WORKING");
 alert("Supabase loaded: " + (typeof window.supabase));
  </script>
 
+<script>
+supabase.from("profiles").select("id").limit(1)
+.then(result => {
+  alert("Supabase connection test: " + (result.error ? result.error.message : "SUCCESS"));
+});
+</script>
+ 
 <div class="app">
 
 <header>
