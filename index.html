@@ -467,24 +467,13 @@ alert("Supabase loaded: " + (typeof window.supabase));
  </script>
 
 <script>
-alert("Starting Supabase test");
-
-Promise.race([
-  supabase.from("profiles").select("id").limit(1),
-  new Promise(resolve =>
-    setTimeout(() => resolve({ timeout: true }), 5000)
-  )
-]).then(function(result) {
-
-  if (result.timeout) {
-    alert("Supabase test timed out");
-  } else if (result.error) {
-    alert("Supabase error: " + result.error.message);
-  } else {
-    alert("Supabase SUCCESS");
-  }
-
-});
+fetch(SUPABASE_URL + "/rest/v1/")
+  .then(function(response) {
+    alert("Supabase server reached: " + response.status);
+  })
+  .catch(function(error) {
+    alert("Supabase server error: " + error.message);
+  });
 </script>
  
 <div class="app">
