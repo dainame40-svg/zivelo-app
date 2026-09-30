@@ -469,17 +469,23 @@ alert("Supabase loaded: " + (typeof window.supabase));
 <script>
 alert("Starting Supabase test");
 
-supabase
-  .from("profiles")
-  .select("id")
-  .limit(1)
-  .then(function(result) {
-    alert("Query finished");
-  })
-  .catch(function(error) {
-    alert("Query error: " + error.message);
-  });
-         </script>
+Promise.race([
+  supabase.from("profiles").select("id").limit(1),
+  new Promise(resolve =>
+    setTimeout(() => resolve({ timeout: true }), 5000)
+  )
+]).then(function(result) {
+
+  if (result.timeout) {
+    alert("Supabase test timed out");
+  } else if (result.error) {
+    alert("Supabase error: " + result.error.message);
+  } else {
+    alert("Supabase SUCCESS");
+  }
+
+});
+</script>
  
 <div class="app">
 
