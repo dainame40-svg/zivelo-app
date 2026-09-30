@@ -467,13 +467,7 @@ alert("Supabase loaded: " + (typeof window.supabase));
  </script>
 
 <script>
-fetch(SUPABASE_URL + "/rest/v1/")
-  .then(function(response) {
-    alert("Supabase server reached: " + response.status);
-  })
-  .catch(function(error) {
-    alert("Supabase server error: " + error.message);
-  });
+alert("Supabase URL: " + SUPABASE_URL);
 </script>
  
 <div class="app">
