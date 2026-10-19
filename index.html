@@ -1209,6 +1209,23 @@ toast('Profile link copied 🔗');
 }
 
 </script>
+ <script>
+supabase
+  .from("profiles")
+  .select("id")
+  .limit(1)
+  .then(({ data, error }) => {
+    if (error) {
+      alert("Database test: " + error.message);
+    } else {
+      alert("Zivelo database connected!");
+    }
+  })
+  .catch((error) => {
+    alert("Connection failed: " + error.message);
+  });
+ </script>
+ 
 
 </body>
   </html>
